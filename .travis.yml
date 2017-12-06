@@ -1,0 +1,44 @@
+language: c
+sudo: required
+dist: trusty
+group: edge
+cache: apt
+os:
+  - linux
+services:
+  - docker
+
+env:
+  - TAG=alpine_ocaml4.07.0      ALIAS='4.07.0'
+  - TAG=alpine_ocaml4.06.0      ALIAS='4.06.0 alpine latest'
+  - TAG=alpine_ocaml4.05.0      ALIAS='4.05.0'
+  - TAG=alpine_ocaml4.04.2      ALIAS='4.04.2'
+  - TAG=alpine_ocaml4.03.0      ALIAS='4.03.0'
+  - TAG=alpine_ocaml4.02.3      ALIAS='4.02.3'
+  - TAG=centos7_ocaml4.07.0     ALIAS='centos_ocaml4.07.0'
+  - TAG=centos7_ocaml4.06.0     ALIAS='centos_ocaml4.06.0 centos7 centos'
+  - TAG=centos7_ocaml4.05.0     ALIAS='centos_ocaml4.05.0'
+  - TAG=centos7_ocaml4.04.2     ALIAS='centos_ocaml4.04.2'
+  - TAG=centos7_ocaml4.03.0     ALIAS='centos_ocaml4.03.0'
+  - TAG=centos7_ocaml4.02.3     ALIAS='centos_ocaml4.02.3'
+  - TAG=debian8_ocaml4.07.0     ALIAS='debian_ocaml4.07.0'
+  - TAG=debian8_ocaml4.06.0     ALIAS='debian_ocaml4.06.0 debian8 debian'
+  - TAG=debian8_ocaml4.05.0     ALIAS='debian_ocaml4.05.0'
+  - TAG=debian8_ocaml4.04.2     ALIAS='debian_ocaml4.04.2'
+  - TAG=debian8_ocaml4.03.0     ALIAS='debian_ocaml4.03.0'
+  - TAG=debian8_ocaml4.02.3     ALIAS='debian_ocaml4.02.3'
+  - TAG=ubuntu16.04_ocaml4.07.0 ALIAS='ubuntu_ocaml4.07.0'
+  - TAG=ubuntu16.04_ocaml4.06.0 ALIAS='ubuntu_ocaml4.06.0 ubuntu16.04 ubuntu'
+  - TAG=ubuntu16.04_ocaml4.05.0 ALIAS='ubuntu_ocaml4.05.0'
+  - TAG=ubuntu16.04_ocaml4.04.2 ALIAS='ubuntu_ocaml4.04.2'
+  - TAG=ubuntu16.04_ocaml4.03.0 ALIAS='ubuntu_ocaml4.03.0'
+  - TAG=ubuntu16.04_ocaml4.02.3 ALIAS='ubuntu_ocaml4.02.3'
+matrix:
+  allow_failures:
+    - env: TAG=alpine_ocaml4.07.0      ALIAS='4.07.0'
+    - env: TAG=centos7_ocaml4.07.0     ALIAS='centos_ocaml4.07.0'
+    - env: TAG=debian8_ocaml4.07.0     ALIAS='debian_ocaml4.07.0'
+    - env: TAG=ubuntu16.04_ocaml4.07.0 ALIAS='ubuntu_ocaml4.07.0'
+
+script:
+  - bash -eu .travis-ci.sh
